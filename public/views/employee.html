@@ -1,0 +1,229 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="row">
+                <div class="col-sm-10">
+                    <h6 class="tabelheading">Employee</h6>
+                </div>
+                <div class="col-sm-2">
+                    <div>
+                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                            data-target="#AddModal">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div ng-controller="EmpController">
+                <!--Table-->
+                <table class="table table-striped" id="Emp_Table">
+                    <thead>
+                        <tr class="he1">
+                            <th>Employee Id</th>
+                            <th>Name</th>
+                            <th>Salary</th>
+                            <th>Email</th>
+                            <th>Project Id</th>
+                            <th>Project Name</th>
+                            <th>Edit/Delete</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="employee in employees">
+                            <td>{{ employee.id}}</td>
+                            <td>{{ employee.employeeName}}</td>
+                            <td>{{ employee.salary }}</td>
+                            <td>{{ employee.email}}</td>
+                            <td>{{ employee.projectId.id}}</td>
+                            <td>{{ employee.projectId.projectName}}</td>
+                            <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                    data-target="#EditModal">Edit</button>
+                            <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                    data-target="#DeleteModal">Delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal for Add -->
+<div class="modal fade" id="AddModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h6 class="modal-title">Employee</h6>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="modal-body">
+                    <form>
+                        <div class="form-horizontal">
+                            <div class="inline">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label for="name"><b>Employee Name</b></label></div>
+                                    <div class="col-lg-6">
+                                        <input type="text" placeholder="Enter Name" name="name"
+                                            ng-model="form.employeeName">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label for="salary"><b>Salary</b></label>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input type="text" placeholder="Enter Salary" name="salary"
+                                            ng-model="form.salary">
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label for="project_id"><b>Project Name</b></label>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input type="text" placeholder="Enter Project ID" name="pId"
+                                            ng-model="form.salary">
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label for="email"><b>Email</b></label>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input type="text" placeholder="Enter Email" name="email" ng-model="form.email">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" onclick="myFunction()" class="cancelbtn">Clear</button>
+                <button type="submit" class="signupbtn">Add</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal for Edit -->
+<div class="modal fade" id="EditModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h6 class="modal-title">Confirmation</h6>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="modal-body">
+                    <form>
+                        <div class="form-horizontal">
+                            <div class="inline">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label for="name"><b>Employee Id</b></label></div>
+                                    <div class="col-lg-6">
+                                        <input type="text" placeholder="" name="eId" ng-model="form.employeeName"
+                                            readonly>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label for="name"><b>Employee Name</b></label></div>
+                                    <div class="col-lg-6">
+                                        <input type="text" placeholder="Enter Name" name="name"
+                                            ng-model="form.employeeName">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label for="salary"><b>Salary</b></label>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input type="text" placeholder="Enter Salary" name="salary"
+                                            ng-model="form.salary">
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label for="project_id"><b>Project Name</b></label>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input type="text" placeholder="Enter Project ID" name="pId"
+                                            ng-model="form.salary">
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label for="email"><b>Email</b></label>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input type="text" placeholder="Enter Email" name="email" ng-model="form.email">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal for Delete -->
+<div class="modal fade" id="DeleteModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h6 class="modal-title">Confirmation</h6>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <P>Are You Sure To Delete?</P>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">Yes</button>
+                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>
