@@ -5,16 +5,16 @@
         font-family: Arial, Helvetica, sans-serif;
     }
 
-    .bg-img {
+    /* .bg-img { */
         /* The image used */
-        background-image: url("/image/background.jpg");
+        /* background-image: url("/image/background.jpg"); */
         /* min-height: 380px; */
         /* Center and scale the image nicely */
-        background-position: center;
+        /* background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
         position: relative;
-    }
+    } */
 
     /* Set a style for the submit button */
 

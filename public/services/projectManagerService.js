@@ -7,6 +7,13 @@ myApp.factory('ProjectManagerService', ['$http', function ($http) {
             });
         },
 
-        add: projectManager => $http.post('http://localhost:8080/DellService/webapi/manager/addProjectManager', projectManager).then(response => response.data),
-    };
+        add: function (pManager) {
+            return $http.post('http://localhost:8080/DellService/webapi/manager/addProjectManager',
+                pManager).then(function (res) {
+                    return res.data;
+                });
+        },
+
+
+    }
 }]);
