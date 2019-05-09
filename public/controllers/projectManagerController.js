@@ -1,5 +1,6 @@
 myApp.controller('ProjectManagerController', ['$scope', 'ProjectManagerService', function ($scope, ProjectManagerService) {
-    // $scope.nProjectManager = {};
+    $scope.nProjectManager = {};
+    getProjectManager();
     function getProjectManager() {
         ProjectManagerService.get().then(function (projectManagers) {
 
@@ -7,7 +8,7 @@ myApp.controller('ProjectManagerController', ['$scope', 'ProjectManagerService',
         })
     };
 
-    getProjectManager();
+
 
     $scope.addProjectManager = function (pManager) {
         ProjectManagerService.add(pManager).then(function (data) {
@@ -26,6 +27,28 @@ myApp.controller('ProjectManagerController', ['$scope', 'ProjectManagerService',
 
 
     };
+    $scope.UpdateProjectManager = function (nProjectManager) {
+        ProjectManagerService.update(nProjectManager).then(function (data) {
+            if (data.success) {
+                alert("Successfully updated");
+                getProjectManager();
+            } else {
+                alert("Error");
+            }
+        })
+    };
 
+    $scope.Delete = function (nProjectManager) {
+        //var result = confirm("Are you sure ?");
+        // if (result == true){
+        ProjectManagerService.delete(nProjectManager).then(function (data) {
+            if (data.success) {
+
+                alert("Successfully deleted");
+            }
+
+        })
+        // }
+    };
 
 }]);

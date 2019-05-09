@@ -14,6 +14,18 @@ myApp.factory('ProjectManagerService', ['$http', function ($http) {
                 });
         },
 
+        update: function (nProjectManager) {
+            return $http.put('http://localhost:8080/DellService/webapi/manager/updateProjectManager/' + nProjectManager.id, nProjectManager).then(function (res) {
+                return res.data;
+            });
+        },
+
+        delete: function (nProjectManager) {
+            return $http.delete('http://localhost:8080/DellService/webapi/manager/deleteProjectManager/' + nProjectManager.id, nProjectManager)
+            .then(function(res){
+                return res.data;
+            })
+        }
 
     }
 }]);
