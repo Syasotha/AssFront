@@ -19,6 +19,6 @@ myApp.factory('EmpService', ['$http', function ($http) {
             .then(function (res) {
                 return res.data;
             });
-        },
+        }
     };
 }]);

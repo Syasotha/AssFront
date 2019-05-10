@@ -1,5 +1,5 @@
 myApp.controller('EmpController', ['$scope', 'EmpService', function ($scope, EmpService) {
-    //$scope.nEmployee = {};
+    $scope.nEmployee = {};
     function getEmployees() {
         EmpService.get().then(function (employees) {
 

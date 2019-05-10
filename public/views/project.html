@@ -1,205 +1,216 @@
-<div class="row">
-    <div class="col-sm-11">
-        <div class="card">
-            <div class="row">
-                <div class="col-sm-10">
-                    <h6 class="tabelheading">Project</h6>
-                </div>
-                <div class="col-sm-2">
-                    <div>
-                        <button type="button" class="btn btn-primary" data-toggle="modal"
-                            data-target="#AddModal">Add</button>
+<div ng-controller="ProjectController">
+    <div class="row">
+        <div class="col-sm-11">
+            <div class="card">
+                <div class="row">
+                    <div class="col-sm-10">
+                        <h6 class="tabelheading">Project</h6>
+                    </div>
+                    <div class="col-sm-2">
+                        <div>
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                data-target="#AddModal">Add</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="row">
-    <div class="col-sm-11">
-        <div class="card">
-            <div ng-controller="ProjectController">
-                <!--Table-->
-                <table class="table table-striped" id="Emp_Table">
-                    <thead>
-                        <tr class="he1">
-                            <th>Project Id</th>
-                            <th>Name</th>
-                            <th>Location</th>
-                            <th>PM Id</th>
-                            <th>PM Name</th>
-                            <th>Edit/Delete</th>
+    <div class="row">
+        <div class="col-sm-11">
+            <div class="card">
+                <div>
+                    <!--Table-->
+                    <table class="table table-striped" id="Emp_Table">
+                        <thead>
+                            <tr class="he1">
+                                <th>Project Id</th>
+                                <th>Name</th>
+                                <th>Location</th>
+                                <th>PM Id</th>
+                                <th>PM Name</th>
+                                <th>Edit/Delete</th>
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="project in projects">
-                            <td>{{ project.id}}</td>
-                            <td>{{ project.projectName}}</td>
-                            <td>{{ project.location}}</td>
-                            <td>{{ project.managerId.id}}</td>
-                            <td>{{ project.managerId.name}}</td>
-                            <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
-                                    data-target="#EditModal">Edit</button>
-                            <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                    data-target="#DeleteModal">Delete</button></td>
-                        </tr>
-                    </tbody>
-                </table>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="project in projects">
+                                <td>{{ project.id}}</td>
+                                <td>{{ project.projectName}}</td>
+                                <td>{{ project.location}}</td>
+                                <td>{{ project.managerId.id}}</td>
+                                <td>{{ project.managerId.name}}</td>
+                                <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                        data-target="#EditModal" ng-click="editProject(project)">Edit</button>
+                                <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                        data-target="#DeleteModal">Delete</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
 
-<!-- Modal for Add -->
-<div class="modal fade" id="AddModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
+    <!-- Modal for Add -->
+    <div class="modal fade" id="AddModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form ng-submit="addProject(project)">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h6 class="modal-title">Project</h6>
+                    </div>
 
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h6 class="modal-title">Project</h6>
-            </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div class="modal-body">
 
-            <!-- Modal body -->
-            <div class="modal-body">
-                <div class="modal-body">
-                    <form>
-                        <div class="form-horizontal">
-                            <div class="inline">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <label for="name"><b>Project Name</b></label></div>
-                                    <div class="col-lg-6">
-                                        <input type="text" placeholder="Enter Name" name="pName" ng-model="form.pName">
+                            <div class="form-horizontal">
+                                <div class="inline">
+
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <label for="name"><b>Project ID</b></label></div>
+                                        <div class="col-lg-6">
+                                            <input type="text" placeholder="Enter ID" name="id" ng-model="project.id">
+                                        </div>
                                     </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <label for="salary"><b>Location</b></label>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <label for="name"><b>Project Name</b></label></div>
+                                        <div class="col-lg-6">
+                                            <input type="text" placeholder="Enter Name" name="pName"
+                                                ng-model="project.projectName">
+                                        </div>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <input type="text" placeholder="Enter Location" name="location"
-                                            ng-model="form.location">
 
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <label for="project_id"><b>Project Manager</b></label>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <input type="text" placeholder="Enter Project Manager" name="pmName"
-                                            ng-model="form.pmName">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <label for="salary"><b>Location</b></label>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input type="text" placeholder="Enter Location" name="location"
+                                                ng-model="project.location">
 
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <label for="project_id"><b>Project Manager</b></label>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input type="text" placeholder="Enter Project Manager" name="pmName"
+                                                ng-model="project.managerId">
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
 
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" onclick="myFunction()" class="cancelbtn">Clear</button>
-                <button type="submit" class="signupbtn">Add</button>
+                        </div>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" onclick="myFunction()" class="cancelbtn">Clear</button>
+                        <button type="submit" class="signupbtn">Add</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-</div>
 
 
-<!-- Modal for Edit -->
-<div class="modal fade" id="EditModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
+    <!-- Modal for Edit -->
+    <div class="modal fade" id="EditModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form>
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h6 class="modal-title">Confirmation</h6>
+                    </div>
 
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h6 class="modal-title">Confirmation</h6>
-            </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div class="modal-body">
 
-            <!-- Modal body -->
-            <div class="modal-body">
-                <div class="modal-body">
-                    <form>
-                        <div class="form-horizontal">
-                            <div class="inline">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <label for="name"><b>Project Id</b></label></div>
-                                    <div class="col-lg-6">
-                                        <input type="text" placeholder="" name="pId" ng-model="form.pId">
+                            <div class="form-horizontal">
+                                <div class="inline">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <label for="name"><b>Project Id</b></label></div>
+                                        <div class="col-lg-6">
+                                            <input type="text" value="{{nProject.id}}" readonly ng-model="nProject.id">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <label for="name"><b>Project Name</b></label></div>
-                                    <div class="col-lg-6">
-                                        <input type="text" placeholder="Enter Name" name="pName" ng-model="form.pName">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <label for="name"><b>Project Name</b></label></div>
+                                        <div class="col-lg-6">
+                                            <input type="text" value="{{nProject.projectName}}" ng-model="nProject.projectName">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <label for="salary"><b>Location</b></label>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <input type="text" placeholder="Enter Location" name="location"
-                                            ng-model="form.location">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <label for="salary"><b>Location</b></label>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input type="text" value="{{nProject.location}}" ng-model="nProject.location">
 
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <label for="project_id"><b>Project Manager</b></label>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <input type="text" placeholder="Enter Project Manager" name="pmName"
-                                            ng-model="form.pmName">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <label for="project_id"><b>Project Manager</b></label>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input type="text" value="{{nProject.managerId.id}}" ng-model="nProject.managerId.id">
 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
-                    </form>
-                </div>
-            </div>
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">Submit</button>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal" ng-click="UpdateProject(nProject)">Submit</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-</div>
 
 
 
-<!-- Modal for Delete -->
-<div class="modal fade" id="DeleteModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
+    <!-- Modal for Delete -->
+    <div class="modal fade" id="DeleteModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
 
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h6 class="modal-title">Confirmation</h6>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h6 class="modal-title">Confirmation</h6>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
 
-            <!-- Modal body -->
-            <div class="modal-body">
-                <P>Are You Sure To Delete?</P>
-            </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <P>Are You Sure To Delete?</P>
+                </div>
 
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">Yes</button>
-                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">No</button>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">Yes</button>
+                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">No</button>
+                </div>
             </div>
         </div>
     </div>
