@@ -44,7 +44,7 @@
                                 <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
                                         data-target="#EditModal" ng-click="editProject(project)">Edit</button>
                                 <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                        data-target="#DeleteModal">Delete</button></td>
+                                        data-target="#DeleteModal" ng-click="editProject(project)">Delete</button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -53,9 +53,7 @@
         </div>
     </div>
 
-
-
-    <!-- Modal for Add -->
+  <!-- Modal for Add -->
     <div class="modal fade" id="AddModal">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -72,13 +70,13 @@
                             <div class="form-horizontal">
                                 <div class="inline">
 
-                                    <div class="row">
+                                    <!-- <div class="row">
                                         <div class="col-lg-6">
                                             <label for="name"><b>Project ID</b></label></div>
                                         <div class="col-lg-6">
                                             <input type="text" placeholder="Enter ID" name="id" ng-model="project.id">
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <label for="name"><b>Project Name</b></label></div>
@@ -124,8 +122,7 @@
         </div>
     </div>
 
-
-    <!-- Modal for Edit -->
+<!-- Modal for Edit -->
     <div class="modal fade" id="EditModal">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -152,7 +149,8 @@
                                         <div class="col-lg-6">
                                             <label for="name"><b>Project Name</b></label></div>
                                         <div class="col-lg-6">
-                                            <input type="text" value="{{nProject.projectName}}" ng-model="nProject.projectName">
+                                            <input type="text" value="{{nProject.projectName}}"
+                                                ng-model="nProject.projectName">
                                         </div>
                                     </div>
 
@@ -161,7 +159,8 @@
                                             <label for="salary"><b>Location</b></label>
                                         </div>
                                         <div class="col-lg-6">
-                                            <input type="text" value="{{nProject.location}}" ng-model="nProject.location">
+                                            <input type="text" value="{{nProject.location}}"
+                                                ng-model="nProject.location">
 
                                         </div>
                                     </div>
@@ -170,7 +169,8 @@
                                             <label for="project_id"><b>Project Manager</b></label>
                                         </div>
                                         <div class="col-lg-6">
-                                            <input type="text" value="{{nProject.managerId.id}}" ng-model="nProject.managerId.id">
+                                            <input type="text" value="{{nProject.managerId.id.name}}"
+                                                ng-model="nProject.managerId.name">
 
                                         </div>
                                     </div>
@@ -181,37 +181,39 @@
                     </div>
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal" ng-click="UpdateProject(nProject)">Submit</button>
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal"
+                            ng-click="UpdateProject(nProject)">Submit</button>
                     </div>
-                </form>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal for Delete -->
+<div class="modal fade" id="DeleteModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h6 class="modal-title"></h6>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <P>Are You Sure To Delete?</P>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success btn-sm" data-dismiss="modal" ng-click="DeleteProject(nProject)">Yes</button>
+                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">No</button>
             </div>
         </div>
     </div>
-
-
-
-    <!-- Modal for Delete -->
-    <div class="modal fade" id="DeleteModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h6 class="modal-title">Confirmation</h6>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <P>Are You Sure To Delete?</P>
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">Yes</button>
-                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">No</button>
-                </div>
-            </div>
-        </div>
-    </div>
+</div>
 </div>

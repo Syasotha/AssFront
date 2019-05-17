@@ -1,5 +1,6 @@
 myApp.controller('ProjectController', ['$scope', 'ProjectService', function ($scope, ProjectService) {
-//$scope.nProject={};
+    $scope.nProject = {};
+    getProject();
     function getProject() {
         ProjectService.get().then(function (projects) {
 
@@ -35,5 +36,18 @@ myApp.controller('ProjectController', ['$scope', 'ProjectService', function ($sc
         })
     };
 
-    getProject();
+    $scope.DeleteProject= function (nProject) {
+        //var result = confirm("Are you sure ?");
+        // if (result == true){
+        ProjectService.delete(nProject).then(function (data) {
+            if (data.success) {
+                console.log(data)
+
+                alert("Successfully deleted");
+            }
+
+        })
+        // }
+    };
+
 }]);

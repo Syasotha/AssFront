@@ -38,7 +38,7 @@ myApp.controller('ProjectManagerController', ['$scope', 'ProjectManagerService',
         })
     };
 
-    $scope.Delete = function (nProjectManager) {
+    $scope.DeleteProjectManager = function (nProjectManager) {
         //var result = confirm("Are you sure ?");
         // if (result == true){
         ProjectManagerService.delete(nProjectManager).then(function (data) {

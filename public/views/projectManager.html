@@ -42,7 +42,8 @@
                                 <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
                                         data-target="#EditModal" ng-click="Edit(projectManager)">Edit</button>
                                 <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                        ng-click="Delete(projectManager.pmId)">Delete</button></td>
+                                        data-target="#DeleteModal" ng-click="Edit(projectManager)">Delete</button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -71,14 +72,14 @@
 
                             <div class="form-horizontal">
                                 <div class="inline">
-                                    <div class="row">
+                                    <!-- <div class="row">
                                         <div class="col-lg-6">
                                             <label for="name"><b>Project Manager Id</b></label></div>
                                         <div class="col-lg-6">
                                             <input type="text" placeholder="Enter ID" ng-model="pManager.id"
                                                 ng-required="true">
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <label for="name"><b>Project Manager Name</b></label></div>
@@ -178,7 +179,7 @@
 
                                         </div>
                                     </div>
-                                </div>
+                                </div> 
                             </div>
 
                         </div>
@@ -214,7 +215,8 @@
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">Yes</button>
+                    <button type="button" class="btn btn-success btn-sm" data-dismiss="modal"
+                        ng-click="DeleteProjectManager(nProjectManager)">Yes</button>
                     <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">No</button>
                 </div>
             </div>

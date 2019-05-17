@@ -18,6 +18,13 @@ myApp.factory('ProjectService', ['$http', function ($http) {
                 .then(function (res) {
                     return res.data;
                 });
+        },
+
+        delete: function (nProject) {
+            return $http.delete('http://localhost:8080/DellService/webapi/project/deleteProject/' + nProject.id, nProject)
+                .then(function (res) {
+                    return res.data;
+                })
         }
-    };
+    }
 }]);
